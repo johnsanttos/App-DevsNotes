@@ -17,9 +17,26 @@ export default StyleSheet.create({
         height: 24
     },
     NotesList: {
-flex:1,
-width: '100%',
+        flex: 1,
+        width: '100%',
     },
+
+    noNotes: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
+
+    noNotesImage: {
+        width: 50,
+        height: 50,
+        marginBottom: 10
+    },
+
+    noNotesText: {
+        fontSize: 17,
+        color: '#fff'
+    }
 
 
 })
