@@ -32,15 +32,25 @@ export default StyleSheet.create({
         height: 24
     },
 
-    closeButton:{
+    closeButton: {
         marginLeft: 15
     },
 
-    closeButtonImage:{
+    closeButtonImage: {
         width: 21,
         height: 21
-    
+
+    },
+    deleteButton: {
+        height: 40,
+        backgroundColor: '#ff3333',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 
+    deleteButtonText: {
+        fontSize: 14,
+        color: '#fff'
+    }
 
 })

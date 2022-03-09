@@ -14,6 +14,18 @@ export default (state = initialState, action) => {
                 body: action.payload.body
             })
             break
+
+            case 'EDIT_NOTES':
+                if (newList[action.payload.key]){
+                    newList[action.payload.key] ={
+                        title: action.payload.title,
+                        body: action.payload.body
+                    }
+                }
+            break
+            case 'DELETE_NOTE':
+                newList = newList.filter((item,index) => index != action.payload.key)
+            break
     }
 
 

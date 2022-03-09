@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
-import { View, TextInput, TouchableHighlight, Image } from 'react-native';
+import { View, TextInput, TouchableHighlight, Image, Text } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import styles from '../styles/editNoteStyles';
 import { useDispatch, useSelector } from 'react-redux';
@@ -59,6 +59,13 @@ export default function Pages(props) {
         if (title != '' && body != '') {
 
             if (status == 'edit') {
+                dispatch({
+                    type: 'EDIT_NOTES',
+                    payload: {
+                        key: route.params.key,
+                        title, body
+                    }
+                })
 
             } else {
                 dispatch({
@@ -80,6 +87,16 @@ export default function Pages(props) {
         navigation.goBack()
     }
 
+    const handleDeleteNoteButton = () => {
+        dispatch({
+            type: 'DELETE_NOTE',
+            payload: {
+                key: route.params.key
+            }
+        })
+
+        navigation.goBack()
+    }
 
     return (
         <View style={styles.container}>
@@ -92,7 +109,7 @@ export default function Pages(props) {
             />
 
             <TextInput style={styles.bodyInput}
-                placeholder="Digite o titulo da anotação"
+                placeholder="Digite o corpo da anotação"
                 placeholderTextColor='#ccc'
                 multiline={true}
                 textAlignVertical='top'
@@ -100,6 +117,18 @@ export default function Pages(props) {
                 onChangeText={t => setBody(t)}
 
             />
+
+            {status == 'edit' &&
+                <TouchableHighlight
+                    style={styles.deleteButton}
+                    underlayColor='#ff0000'
+                    onPress={handleDeleteNoteButton}
+                >
+                    <Text
+                        style={styles.deleteButtonText}
+                    >Excluir anotação </Text>
+                </TouchableHighlight>
+            }
 
         </View>
     );
